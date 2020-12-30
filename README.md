@@ -14,4 +14,5 @@ Files added to this repository include:
   + growth workbook, a legacy collection of growth and node development data
   + crop generation workbook template, a collaborative project that gathered all available datasets for each crop generation
   + IPM reference document, a master reference sheet used to track the locations of each individual plant from cloning to harvest, approximating when necessary
+  + master observation document, used to collect information on different characteristics of relavent phenotypes throughout their lifecycle, summarized with a pivot table
   
