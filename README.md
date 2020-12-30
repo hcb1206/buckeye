@@ -1,7 +1,7 @@
 # buckeye
 My data collection methods, projects, and database information developed at Buckeye Relief.
 
-Files added to this repository inludde:
+Files added to this repository include:
   + phenotype reference sheet, used to record all relevant characteristics of each phenotype grown
   + height data workbook, including the collection templates
   + root data workbook, used to collect information about the success of each clone generation
