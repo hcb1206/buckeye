@@ -6,6 +6,7 @@ library(readxl)
 library(qtl)
 library(ggplot2)
 library(psych)
+library(effsize)
 
 ## pulling the data in, cleaning it up
 
@@ -93,10 +94,13 @@ cts$budwidth <- cts$budwidth + 0.7
 ggplot(budwidth, aes(x=pheno, y=budwidth, fill=treatment)) + 
   geom_boxplot() + scale_fill_manual(values=c("#999999", "#E69F00", "blue", "red")) + 
   labs(x = "Phenotype", y = "Bud Width (mm)", title = "Bud Width Measurements C35") +
-  geom_text(data = cts, aes(label=paste("n = ", count)), position = position_dodge2(width = 0.8))
+  geom_text(data = cts, aes(label=paste("n = ", count, ",", round(budwidth, 1), "mm")), 
+                            position = position_dodge2(width = 0.8))
+ 
 
 
-## here's what we'll use as non-parametric statistics: Wilcoxon Test
+## here's what we'll use as non-parametric statistics: Mann-Whitney U Test
+## also known as the Wilcoxon Signed Rank Test
 
 select <- c("treatment", "budwidth")
 wdata_orob <- orob[,select]
@@ -127,3 +131,9 @@ d.res_soda13 <- wilcox.test(soda1, soda3, alternative = "less")
 ## and that there was no significant difference in the bud width between SODA rockwool and 
 ## SODA coco coir.
 
+
+# here are the effect sizes for the treatments that had one
+
+eff_orob <- cliff.delta(orob2, orob1, return.dm = TRUE)
+eff_soda12 <- cliff.delta(soda2, soda1, return.dm = TRUE)
+eff_soda23 <- cliff.delta(soda2, soda3, return.dm = TRUE)
